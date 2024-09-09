@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import DevelopmentConfig
 
+
 db = SQLAlchemy()
 
 def create_app(config_class=DevelopmentConfig):
@@ -11,7 +12,7 @@ def create_app(config_class=DevelopmentConfig):
     db.init_app(app)
 
     # Register Blueprints
-    from app.routes import main_bp  # Import the Blueprint
+    from app.main import main_bp  # Import the Blueprint
     app.register_blueprint(main_bp)
 
     return app
