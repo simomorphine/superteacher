@@ -1,0 +1,55 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Flask instance folder
+instance/
+
+# Environment variables
+.env
+*.env
+
+# SQLite database files
+*.db
+*.sqlite3
+
+# PyCharm IDE files
+.idea/
+
+# VS Code IDE files
+.vscode/
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# Log files
+*.log
+
+# Coverage reports
+.coverage
+*.cover
+*.coverage
+*.hypothesis/
+.coverage.*
+*.tox/
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Virtual environment directory
+venv/
+ENV/
+env/
+.venv/
+
+# Migrations folder for Flask-Migrate
+migrations/
+
+# Ignore configuration for Heroku or similar PaaS platforms
+*.heroku/
+
+# Ignore local Flask and other service cache files
+*.cache
