@@ -14,5 +14,7 @@ def create_app(config_class=DevelopmentConfig):
     # Register Blueprints
     from app.main import main_bp  # Import the Blueprint
     app.register_blueprint(main_bp)
+    from app.auth import auth_bp
+    app.register_blueprint(auth_bp)
 
     return app
