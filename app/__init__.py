@@ -16,5 +16,6 @@ def create_app(config_class=DevelopmentConfig):
     app.register_blueprint(main_bp)
     from app.auth import auth_bp
     app.register_blueprint(auth_bp)
+    from app.evaluations import eval_bp
 
     return app
