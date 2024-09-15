@@ -1,0 +1,82 @@
+.choice-section {
+    margin-top: 20px;
+    display: none; /* Hide all sections initially */
+}
+.btn-choice {
+    margin: 10px 5px;
+}
+.navigation-btns {
+    margin-top: 30px;
+}
+.error-message {
+    color: red;
+    display: none; /* Hide error messages initially */
+}
+.schedule-day {
+    margin-bottom: 10px;
+}
+.holiday-date {
+    margin-bottom: 10px;
+}
+
+/*calender style*/
+
+/* styles.css */
+.schedule-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#schedule-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+}
+
+#schedule-table th, #schedule-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#schedule-table th {
+    background-color: #f4f4f4;
+}
+
+#schedule-table td.selected {
+    background-color: #add8e6;
+}
+/*setting icon style and positioning*/
+.relative-td {
+    position: relative;
+    border: 1px solid #ccc;
+  }
+  
+  .positioned-image {
+    position: absolute;
+  }
+  
+  .top-left {
+    width: 25px;
+    height: auto;
+    top: -25px; /* Adjust as needed */
+    left: -10px; /* Adjust as needed */
+  }
+  
+  .top-right {
+    width: 25px;
+    height: auto;
+    top: -25px; /* Adjust as needed */
+    right: -10px; /* Adjust as needed */
+  }
+  
+  .bottom-right {
+    width: 25px;
+    height: 51px;
+    bottom: -4px; /* Adjust as needed */
+    right: -25px; /* Adjust as needed */
+  }
+  

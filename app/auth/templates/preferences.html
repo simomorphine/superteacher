@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferences</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/styles.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Set Your Preferences</h1>
+
+        <!-- Choose Teacher Type -->
+        <div id="teacher-type-section" class="choice-section text-center">
+            <h3>Are you a Mid-School or High-School Teacher?</h3>
+            <button class="btn btn-primary btn-choice" data-choice="Mid-School">Mid-School</button>
+            <button class="btn btn-secondary btn-choice" data-choice="High-School">High-School</button>
+            <p class="error-message" id="teacher-type-error">Please select a teacher type.</p>
+        </div>
+
+        <!-- Choose Subject -->
+        <div id="subject-section" class="choice-section text-center">
+            <h3>Select Subject</h3>
+            <button class="btn btn-info btn-choice" data-choice="Arabic">Arabic</button>
+            <button class="btn btn-info btn-choice" data-choice="French">French</button>
+            <button class="btn btn-info btn-choice" data-choice="Computer Science">English</button>
+            <button class="btn btn-info btn-choice" data-choice="Math">Math</button>
+            <button class="btn btn-info btn-choice" data-choice="Physics">Physics</button>
+            <button class="btn btn-info btn-choice" data-choice="Chemistry">Chemistry</button>
+            <button class="btn btn-info btn-choice" data-choice="Science">Science</button>
+            <button class="btn btn-info btn-choice" data-choice="History">philosophy</button>
+            <button class="btn btn-info btn-choice" data-choice="Geography">History & Geography</button>
+            <button class="btn btn-info btn-choice" data-choice="Islamic Studies">Islamic Studies</button>
+            <button class="btn btn-info btn-choice" data-choice="Physical Education">Physical Education</button>
+            <button class="btn btn-info btn-choice" data-choice="Arts">Arts</button>
+            <button class="btn btn-info btn-choice" data-choice="Computer Science">Music</button>
+            <button class="btn btn-info btn-choice" data-choice="Computer Science">Technology</button>
+            <p class="error-message" id="subject-error">Please select a subject.</p>
+        </div>
+        
+
+        <!-- Choose Language -->
+        <div id="language-section" class="choice-section text-center">
+            <h3>Select Language</h3>
+            <button class="btn btn-success btn-choice" data-choice="FR">FR</button>
+            <button class="btn btn-success btn-choice" data-choice="AR">AR</button>
+            <button class="btn btn-success btn-choice" data-choice="EN">EN</button>
+            <p class="error-message" id="language-error">Please select a language.</p>
+        </div>
+
+        <!-- Enter School Name -->
+        <div id="school-name-section" class="choice-section">
+            <h3>Enter School Name</h3>
+            <input type="text" id="school-name" class="form-control" placeholder="Enter your school name">
+            <p class="error-message" id="school-name-error">Please enter your school name.</p>
+        </div>
+
+        <!-- Weekly Schedule Section -->
+        <div id="schedule-section" class="choice-section">
+            <h3>Enter Your Weekly Schedule</h3>
+                <table id="schedule-table">
+                    <thead>
+                        <tr>
+                            <th></th> <!-- Empty cell for the top-left corner -->
+                            <!-- Time slots from 8:00 to 18:00 -->
+                            <th>08:00</th>
+                            <th>09:00</th>
+                            <th>10:00</th>
+                            <th>11:00</th>
+                            <th>12:00</th>
+                            <th>13:00</th>
+                            <th>14:00</th>
+                            <th>15:00</th>
+                            <th>16:00</th>
+                            <th>17:00</th>
+                            <th>18:00</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Days of the week -->
+                        <tr>
+                            <th>Monday</th>
+                            <!-- Cells for each hour of Monday -->
+                            <td class="relative-td"><img src="../static/assets/bin.png" class="positioned-image top-left" alt="delete icon"><img src="../static/assets/edit-button.png" class="positioned-image top-right" alt="modify icon"><img src="../static/assets/arrow.png" class="positioned-image bottom-right" alt="expand icon"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <th>Tuesday</th>
+                            <!-- Cells for each hour of Tuesday -->
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <th>Wednesday</th>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <th>Thursday</th>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <th>Friday</th>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <th>Saturday</th>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                
+            <p class="error-message" id="schedule-error">Please enter your weekly schedule or skip.</p>
+        </div>
+
+        <!-- Holidays Section -->
+        <!-- <div id="holidays-section" class="choice-section">
+            <h3>Enter Holidays (optional)</h3>
+            
+        </div> -->
+
+        <!-- Navigation Buttons -->
+        <div class="text-center navigation-btns">
+            <button id="previous-btn" class="btn btn-secondary" style="display: none;">Previous</button>
+            <button id="skep" class="btn btn-info" style="display: none;">Skep for now</button>
+            <button id="next-btn" class="btn btn-primary">Next</button>
+            <button id="submit-btn" class="btn btn-success" style="display: none;">Submit</button>
+        </div>
+    </div>
+    <script src="../static/js/handlpreferences.js"></script>
+</body>
+</html>

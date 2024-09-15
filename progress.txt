@@ -1,4 +1,109 @@
 need to work on templates files with login 
+index in main templates shoud become dashboard
+need landing page well be instead of index 
 need to work on assistant api 
 need to work on evaluations
+Automation and file manipulation
+manage state and history with localstorage api and history api
+check MathML / latex in html
+
+icons https://www.flaticon.com/
+
+SpeechRecognition API (Web API):
+
+    A built-in browser API that can be useful for voice interaction.
+    You can capture voice input to integrate with your AI backend.
+
+Chart.js:
+
+        Great for visualizing data, which is often necessary in AI-driven projects.
+        You can create interactive, responsive charts and graphs to display AI results or analytics.
+
+
+D3.js:
+
+        Useful for creating complex, data-driven visualizations.
+        Ideal for AI tools that need to represent data insights dynamically.
+
+ ApexCharts:
+Purpose: A modern, interactive charting library similar to Chart.js, but with more flexibility.
+Use Case: Excellent for building dashboards with real-time updates, analytics, and complex charts.
+Example: Real-time visual feedback from AI model processing or user data interactions.
+
+Plotly.js:
+
+A high-level charting library built on top of D3.js.
+It's great for creating interactive, complex plots like 3D graphs, heatmaps, and maps.
+ECharts:
+
+A powerful charting and visualization library from Baidu.
+It's easy to use, highly customizable, and supports rich visualizations, including bar charts, pie charts, maps, and more.
+Three.js:
+
+A popular library for 3D visualization.
+Useful if you need to add 3D charts, animations, or interactive models to your AI project.
+Vis.js:
+
+A dynamic, browser-based visualization library.
+Best for network, timeline, and graph visualizations.
+
+Web Animations API:
+Purpose: Native JavaScript API for creating smooth animations.
+Use Case: Add dynamic, programmatic animations to UI elements for better visual appeal (e.g., button transitions, loading indicators).
+Alternative: Libraries like Anime.js or GSAP are also excellent for more complex animations
+
+WebRTC API:
+Purpose: Enables real-time audio, video, and data sharing between browsers without the need for plugins.
+Use Case: Ideal for creating live video chat features, file sharing, or even screen sharing functionality.
+3. Socket.IO:
+Purpose: For real-time communication between the client and server.
+Use Case: Enables real-time updates (like chats, notifications, or live data feeds) without refreshing the page.
+Example: Real-time AI model status updates, multiplayer interactions, or collaborative tools.
+
+4. WebGL:
+Purpose: A low-level API for rendering 3D graphics in the browser.
+
+Use Case: If your project involves visualizing complex 3D models or AI-generated 3D environments, WebGL can provide stunning, interactive 3D graphics.
+
+Alternative: Use Three.js (built on WebGL) for easier 3D rendering.
+
+5. Emotion.js or Styled Components (for React projects):
+Purpose: A CSS-in-JS library for styling React components with scoped, dynamic styles.
+Use Case: Provides better styling organization and maintainability in complex projects.
+6. Tone.js:
+Purpose: Web Audio framework for creating interactive music in the browser.
+Use Case: Add interactive sound effects, music generation, or real-time audio manipulation to your AI tool.
+Example: Could be used for educational projects, interactive learning tools, or voice feedback.
+7. Pusher or Firebase Realtime Database:
+Purpose: Provide real-time data synchronization.
+Use Case: Similar to Socket.IO but easier to set up for tasks like real-time notifications, chat, and live user data tracking. Firebase also offers authentication services and cloud storage.
+8. A-Frame (VR/AR Library):
+Purpose: A framework for building virtual reality (VR) and augmented reality (AR) experiences directly in the browser.
+Use Case: If your AI tool includes immersive experiences or data visualization in 3D space, A-Frame allows you to build AR/VR experiences easily.
+9. Tippy.js:
+Purpose: A lightweight tooltip library.
+Use Case: Enhance user experience with rich tooltips, making your AI tool more interactive and informative with contextual pop-ups.
+
+10. Lottie:
+Purpose: A library for rendering high-quality animations exported from Adobe After Effects as JSON files.
+Use Case: Add engaging and lightweight animations that don’t slow down your site, such as loading indicators, animated icons, or user engagement prompts.
+11. Moment.js or Day.js:
+Purpose: Handle dates and times with ease.
+Use Case: Useful for managing time zones, real-time updates, AI tool timestamps, countdowns, or scheduling features.
+
+
+12. Particles.js:
+Purpose: A lightweight library for creating particle backgrounds and interactive effects.
+Use Case: Create beautiful, animated particle backgrounds or effects when interacting with the AI tool.
+13. Cytoscape.js:
+Purpose: A graph theory (network) library for visualizing relational data.
+Use Case: If your AI tool needs to visualize relationships (e.g., knowledge graphs, neural network structures, social networks), Cytoscape.js provides interactive visualizations.
+14. Plyr:
+Purpose: A simple, customizable media player for video, audio, and YouTube/Vimeo embeds.
+Use Case: If your tool requires multimedia integration, Plyr provides a sleek, easy-to-use player with rich functionality.
+
+
+
+
+
 
