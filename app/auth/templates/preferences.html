@@ -25,9 +25,9 @@
         <!-- Choose Subject -->
         <div id="subject-section" class="choice-section text-center">
             <h3>Select Subject</h3>
-            <button class="btn btn-info btn-choice" data-choice="Arabic">Arabic</button>
-            <button class="btn btn-info btn-choice" data-choice="French">French</button>
-            <button class="btn btn-info btn-choice" data-choice="Computer Science">English</button>
+            <button class="btn btn-info btn-choice" data-choice="Arabic" data-lg="AR">Arabic</button>
+            <button class="btn btn-info btn-choice" data-choice="French" data-lg="FR">French</button>
+            <button class="btn btn-info btn-choice" data-choice="Computer Science" data-lg="EN">English</button>
             <button class="btn btn-info btn-choice" data-choice="Math">Math</button>
             <button class="btn btn-info btn-choice" data-choice="Physics">Physics</button>
             <button class="btn btn-info btn-choice" data-choice="Chemistry">Chemistry</button>
@@ -85,7 +85,7 @@
                         <tr>
                             <th>Monday</th>
                             <!-- Cells for each hour of Monday -->
-                            <td class="relative-td"><img src="../static/assets/bin.png" class="positioned-image top-left" alt="delete icon"><img src="../static/assets/edit-button.png" class="positioned-image top-right" alt="modify icon"><img src="../static/assets/arrow.png" class="positioned-image bottom-right" alt="expand icon"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td class="relative-td"><!--<img src="../static/assets/bin.png" class="positioned-image top-left" alt="delete icon"><img src="../static/assets/edit-button.png" class="positioned-image top-right" alt="modify icon"><img src="../static/assets/arrow.png" class="positioned-image bottom-right" alt="expand icon">--></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                         </tr>
                         <tr>
                             <th>Tuesday</th>
@@ -129,6 +129,45 @@
             <button id="submit-btn" class="btn btn-success" style="display: none;">Submit</button>
         </div>
     </div>
-    <script src="../static/js/handlpreferences.js"></script>
+    <script src="../static/js/handlpreferences.js" defer></script>
+    <script>
+// document.addEventListener('DOMContentLoaded', () => {
+//     document.querySelectorAll('td').forEach(td => {
+//         td.addEventListener('click', () => {
+//             // If the <td> already contains an input, don't do anything
+//             if (td.querySelector('input')) return;
+
+//             // Store the current text content
+//             const currentText = td.innerText.trim();
+
+//             // Create an input element
+//             const input = document.createElement('input');
+//             input.type = 'text';
+//             input.value = currentText;
+//             input.style.width = '100%'; // Optional: Make the input full width to fit the <td>
+
+//             // Clear the <td> content and append the input
+//             td.innerHTML = '';
+//             td.appendChild(input);
+
+//             // Focus on the input
+//             input.focus();
+
+//             // When the input loses focus, replace it with the input's value
+//             input.addEventListener('blur', () => {
+//                 td.innerText = input.value.trim() || currentText; // Set to original if input is empty
+//             });
+
+//             // Handle "Enter" key to finalize input
+//             input.addEventListener('keydown', (event) => {
+//                 if (event.key === 'Enter') {
+//                     input.blur(); // Trigger blur event to finalize input
+//                 }
+//             });
+//         });
+//     });
+// });
+
+    </script>
 </body>
 </html>

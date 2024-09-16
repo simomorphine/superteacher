@@ -74,8 +74,9 @@
   }
   
   .bottom-right {
+    /* background-image: url('../assets/arrow.png');
+    background-repeat: no-repeat; */
     width: 25px;
-    height: 51px;
     bottom: -4px; /* Adjust as needed */
     right: -25px; /* Adjust as needed */
   }

@@ -17,6 +17,69 @@ const sections = [
     'schedule-section',
     'holidays-section'
 ];
+// document.addEventListener('DOMContentLoaded', () =>{
+//     document.querySelectorAll('td').forEach(td => {
+//         td.addEventListener('click', () =>{
+//             if (td.textContent){
+//                 const expandIcon = document.createElement('img');
+//                 expandIcon.classList.add('bottom-right');
+//                 expandIcon.src = '../static/assets/arrow.png';
+//                 expandIcon.style.height = td.offsetHeight;
+//                 td.appendChild(expandIcon);
+//             }
+//         });
+//     });
+// });
+// handle the calender here
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('td').forEach(td => {
+        td.addEventListener('click', () => {
+
+            // If the <td> already contains an input, don't do anything
+            if (td.querySelector('input')) return;
+
+            // Store the current text content
+            const currentText = td.innerText.trim();
+
+            // Create an input element
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = currentText;
+            input.style.width = '100%'; // Optional: Make the input full width to fit the <td>
+
+            // Clear the <td> content and append the input
+            td.innerHTML = '';
+            td.appendChild(input);
+
+            // Focus on the input
+            input.focus();
+
+            // When the input loses focus, replace it with the input's value
+            input.addEventListener('blur', () => {
+                td.innerText = input.value.trim() || currentText; // Set to original if input is empty
+                const expandIcon = document.createElement('img');
+                expandIcon.classList.add('bottom-right');
+                expandIcon.src = '../static/assets/arrow.png';
+                expandIcon.style.height = td.offsetHeight;
+                td.appendChild(expandIcon);
+            });
+
+            // Handle "Enter" key to finalize input
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    input.blur(); // Trigger blur event to finalize input
+                    const expandIcon = document.createElement('img');
+                    expandIcon.classList.add('bottom-right');
+                    expandIcon.src = '../static/assets/arrow.png';
+                    expandIcon.style.height = td.offsetHeight;
+                    td.appendChild(expandIcon);
+                }
+            });
+        });
+    });
+    
+});
+
 
 // Initialize
 document.getElementById(sections[currentSectionIndex]).style.display = 'block';
@@ -69,11 +132,6 @@ document.getElementById('previous-btn').addEventListener('click', () => {
     navigateSections(-1);
 });
 
-// need to work in here
-document.getElementById('skip-schedule-btn').addEventListener('click', () => {
-    document.getElementById('next-btn').click();
-});
-
 document.getElementById('submit-btn').addEventListener('click', () => {
     if (!validateSection()) return;
 
@@ -84,21 +142,34 @@ document.getElementById('submit-btn').addEventListener('click', () => {
 // Functions
 // need to modify this function
 function collectScheduleData() {
-    // Collect schedule data manually without Flikker
-    document.querySelectorAll('#schedule-table td.selected').forEach(cell => {
-        const day = cell.dataset.day; // Assuming each cell has a `data-day` attribute
-        userPreferences.schedule[day] = cell.textContent;
-    });
-}
-// need to modify this function
-function collectHolidaysData() {
-    userPreferences.holidays = [];
-    document.querySelectorAll('#holidays-list input').forEach(input => {
-        if (input.value) {
-            userPreferences.holidays.push(input.value);
+    console.log("im inside");
+    const table = document.getElementById('schedule-table');
+    const rows = table.querySelectorAll('tbody tr');
+    const timeSlots = Array.from(table.querySelectorAll('thead th')).slice(1);
+
+    rows.forEach(row => {
+        const day = row.querySelector('th').textContent.trim();
+        const cells = row.querySelectorAll('td');
+
+        // Initialize the day array if it doesn't exist
+        if (!userPreferences.schedule[day]) {
+            userPreferences.schedule[day] = [];
         }
+
+        cells.forEach((cell, index) => {
+            const description = cell.textContent.trim();
+            if (description) {
+                const time = timeSlots[index].textContent.trim();
+                userPreferences.schedule[day].push({ time, description });
+            }
+        });
     });
 }
+
+
+//collect holiday data here
+// function collectHolidaysData() {
+// }
 
 function navigateSections(direction) {
     // Hide current section
@@ -107,7 +178,7 @@ function navigateSections(direction) {
     // Move to the next/previous section
     currentSectionIndex += direction;
     currentSectionIndex = Math.max(0, Math.min(currentSectionIndex, sections.length - 1));
-
+    //skep the language section if the subject is a language
     // Show new section
     document.getElementById(sections[currentSectionIndex]).style.display = 'block';
 
@@ -117,6 +188,8 @@ function navigateSections(direction) {
     document.getElementById('submit-btn').style.display = currentSectionIndex === sections.length - 1 ? 'inline-block' : 'none';
     if (sections[currentSectionIndex] === 'schedule-section' || sections[currentSectionIndex] === 'holidays-section') {
         document.getElementById('skep').style.display = 'inline-block';
+    }else{
+        document.getElementById('skep').style.display = 'none';
     }
 }
 
@@ -135,11 +208,14 @@ function validateSection() {
         isValid = false;
     } else if (currentSectionId === 'language-section' && !userPreferences.language) {
         displayError('language-error', true);
-        isValid = false;
-    } else if (currentSectionId === 'schedule-section' && Object.keys(userPreferences.schedule).length === 0) {
-        displayError('schedule-error', true);
-        isValid = false;
-    }
+        isValid = false;}
+    // } else if (currentSectionId === 'schedule-section' && Object.keys(userPreferences.schedule).length === 0) {
+    //     displayError('schedule-error', true);
+    //     isValid = false;
+    // } else if (currentSectionId === 'holidays-section' && userPreferences.holidays.length === 0) {
+    //     displayError('holidays-error', true);
+    //     isValid = false;
+    // }
 
     return isValid;
 }
@@ -168,7 +244,3 @@ function submitPreferences() {
         console.error('Error:', error);
     });
 }
-
-// let work with calender
-document.getElementsByTagName('td').addEventListener('click')
-
