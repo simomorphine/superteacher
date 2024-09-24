@@ -57,22 +57,31 @@ document.addEventListener('DOMContentLoaded', () => {
             // When the input loses focus, replace it with the input's value
             input.addEventListener('blur', () => {
                 td.innerText = input.value.trim() || currentText; // Set to original if input is empty
-                const expandIcon = document.createElement('img');
-                expandIcon.classList.add('bottom-right');
-                expandIcon.src = '../static/assets/arrow.png';
-                expandIcon.style.height = td.offsetHeight;
-                td.appendChild(expandIcon);
+                //add icons if not exist
+                if (imagedoesNotExist){}
+                        addImageButton(expandIcon);
+                        addImageButton(deleteIcon);
+                        changeColor(td);
+                // const expandIcon = document.createElement('img');
+                // expandIcon.classList.add('bottom-right');
+                // expandIcon.src = '../static/assets/arrow.png';
+                // expandIcon.style.height = td.offsetHeight;
+                // td.appendChild(expandIcon);
             });
 
             // Handle "Enter" key to finalize input
             input.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     input.blur(); // Trigger blur event to finalize input
-                    const expandIcon = document.createElement('img');
-                    expandIcon.classList.add('bottom-right');
-                    expandIcon.src = '../static/assets/arrow.png';
-                    expandIcon.style.height = td.offsetHeight;
-                    td.appendChild(expandIcon);
+                    //add icons if not exist
+                    addImageButton(expandIcon);
+                    addImageButton(deleteIcon);
+                    changeColor(td);
+                    // const expandIcon = document.createElement('img');
+                    // expandIcon.classList.add('bottom-right');
+                    // expandIcon.src = '../static/assets/arrow.png';
+                    // expandIcon.style.height = td.offsetHeight;
+                    // td.appendChild(expandIcon);
                 }
             });
         });
