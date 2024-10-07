@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/calendarstyle.css" rel="stylesheet">
+</head>
+<style>
+    .relative-td {
+        position: relative; /* Make the <td> a positioning context */
+    }
+
+    /* General styles for the positioned SVG buttons */
+    .positioned-svg {
+        position: absolute; /* Position the buttons absolutely within the <td> */
+        background: transparent; /* Make background transparent */
+        border: none; /* Remove border */
+        cursor: pointer; /* Change cursor to pointer on hover */
+        outline: none; /* Remove outline */
+    }
+
+    /* Expand button styles */
+    .positioned-svg.expand {
+        height: 100%; /* Fill the height of the cell */
+        right: 0; /* Position it at the right side */
+        top: 0; /* Align it at the top */
+    }
+
+    /* Remove button styles */
+    .positioned-svg.remove {
+        top: 5px; /* Adjust this value to position it vertically */
+        left: 5px; /* Adjust this value to position it horizontally */
+    }
+
+    /* Optional: style the SVG for better visibility */
+    svg {
+        fill: #54f5a5; /* Default color for SVG */
+    }
+
+</style>
+<body>
+    <div class="container">
+        <!-- Weekly Schedule Section -->
+        <div id="schedule-section" class="choice-section">
+            <h3>Enter Your Weekly Schedule</h3>
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th></th> <!-- Empty cell for the top-left corner -->
+                        <!-- Time slots from 8:00 to 18:00 -->
+                        <th>08:00</th>
+                        <th>09:00</th>
+                        <th>10:00</th>
+                        <th>11:00</th>
+                        <th>12:00</th>
+                        <th>13:00</th>
+                        <th>14:00</th>
+                        <th>15:00</th>
+                        <th>16:00</th>
+                        <th>17:00</th>
+                        <th>18:00</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Days of the week -->
+                    <tr>
+                        <th>Monday</th>
+                        <!-- Cells for each hour of Monday -->
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>Tuesday</th>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>Wednesday</th>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>Thursday</th>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>Friday</th>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>Saturday</th>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="error-message" id="schedule-error">Please enter your weekly schedule or skip.</p>
+        </div>
+    </div>
+
+    <script src="../static/js/handleschedule.js"></script>
+</body>
+</html>

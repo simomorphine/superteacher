@@ -6,7 +6,6 @@
     <title>Preferences</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/styles.css" rel="stylesheet">
-    <link href="calenderstyles.css" rel="stylesheet">
     <style>
 
     </style>
@@ -60,115 +59,14 @@
             <p class="error-message" id="school-name-error">Please enter your school name.</p>
         </div>
 
-        <!-- Weekly Schedule Section -->
-        <div id="schedule-section" class="choice-section">
-            <h3>Enter Your Weekly Schedule</h3>
-                <table id="schedule-table">
-                    <thead>
-                        <tr>
-                            <th></th> <!-- Empty cell for the top-left corner -->
-                            <!-- Time slots from 8:00 to 18:00 -->
-                            <th>08:00</th>
-                            <th>09:00</th>
-                            <th>10:00</th>
-                            <th>11:00</th>
-                            <th>12:00</th>
-                            <th>13:00</th>
-                            <th>14:00</th>
-                            <th>15:00</th>
-                            <th>16:00</th>
-                            <th>17:00</th>
-                            <th>18:00</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Days of the week -->
-                        <tr>
-                            <th>Monday</th>
-                            <!-- Cells for each hour of Monday -->
-                            <td><!--<img src="../static/assets/bin.png" class="positioned-image top-left" alt="delete icon"><img src="../static/assets/edit-button.png" class="positioned-image top-right" alt="modify icon"><img src="../static/assets/arrow.png" class="positioned-image bottom-right" alt="expand icon">--></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <th>Tuesday</th>
-                            <!-- Cells for each hour of Tuesday -->
-                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <th>Wednesday</th>
-                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <th>Thursday</th>
-                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <th>Friday</th>
-                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <th>Saturday</th>
-                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-                
-            <p class="error-message" id="schedule-error">Please enter your weekly schedule or skip.</p>
-        </div>
-
-        <!-- Holidays Section -->
-        <!-- <div id="holidays-section" class="choice-section">
-            <h3>Enter Holidays (optional)</h3>
-            
-        </div> -->
-
         <!-- Navigation Buttons -->
         <div class="text-center navigation-btns">
             <button id="previous-btn" class="btn btn-secondary" style="display: none;">Previous</button>
-            <button id="skep" class="btn btn-info" style="display: none;">Skep for now</button>
             <button id="next-btn" class="btn btn-primary">Next</button>
             <button id="submit-btn" class="btn btn-success" style="display: none;">Submit</button>
         </div>
     </div>
-    <script src="../static/js/handlpreferences.js" defer></script>
-    <script>
-// document.addEventListener('DOMContentLoaded', () => {
-//     document.querySelectorAll('td').forEach(td => {
-//         td.addEventListener('click', () => {
-//             // If the <td> already contains an input, don't do anything
-//             if (td.querySelector('input')) return;
+    <script src="../static/js/handlepreferences.js" defer></script>
 
-//             // Store the current text content
-//             const currentText = td.innerText.trim();
-
-//             // Create an input element
-//             const input = document.createElement('input');
-//             input.type = 'text';
-//             input.value = currentText;
-//             input.style.width = '100%'; // Optional: Make the input full width to fit the <td>
-
-//             // Clear the <td> content and append the input
-//             td.innerHTML = '';
-//             td.appendChild(input);
-
-//             // Focus on the input
-//             input.focus();
-
-//             // When the input loses focus, replace it with the input's value
-//             input.addEventListener('blur', () => {
-//                 td.innerText = input.value.trim() || currentText; // Set to original if input is empty
-//             });
-
-//             // Handle "Enter" key to finalize input
-//             input.addEventListener('keydown', (event) => {
-//                 if (event.key === 'Enter') {
-//                     input.blur(); // Trigger blur event to finalize input
-//                 }
-//             });
-//         });
-//     });
-// });
-
-    </script>
 </body>
 </html>

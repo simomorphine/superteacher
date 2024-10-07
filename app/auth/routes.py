@@ -38,10 +38,12 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
+        login_user(user)
         flash('Your account has been created. You can now log in!', 'success')
         return redirect(url_for('auth.preferences'))
     return render_template('register.html', form=form)
 
+@login_required
 @auth_bp.route('/preferences', methods=["GET","POST"])
 def preferences():
     return render_template("preferences.html")
