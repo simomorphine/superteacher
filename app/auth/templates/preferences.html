@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preferences</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/styles.css" rel="stylesheet">
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/preferences.css">
 </head>
 <body>
     <div class="container mt-5">
@@ -27,21 +24,20 @@
             <h3>Select Subject</h3>
             <button class="btn btn-info btn-choice" data-choice="Arabic" data-lg="AR">Arabic</button>
             <button class="btn btn-info btn-choice" data-choice="French" data-lg="FR">French</button>
-            <button class="btn btn-info btn-choice" data-choice="Computer Science" data-lg="EN">English</button>
+            <button class="btn btn-info btn-choice" data-choice="English" data-lg="EN">English</button>
             <button class="btn btn-info btn-choice" data-choice="Math">Math</button>
             <button class="btn btn-info btn-choice" data-choice="Physics">Physics</button>
             <button class="btn btn-info btn-choice" data-choice="Chemistry">Chemistry</button>
             <button class="btn btn-info btn-choice" data-choice="Science">Science</button>
-            <button class="btn btn-info btn-choice" data-choice="History">philosophy</button>
+            <button class="btn btn-info btn-choice" data-choice="History">Philosophy</button>
             <button class="btn btn-info btn-choice" data-choice="Geography">History & Geography</button>
             <button class="btn btn-info btn-choice" data-choice="Islamic Studies">Islamic Studies</button>
             <button class="btn btn-info btn-choice" data-choice="Physical Education">Physical Education</button>
             <button class="btn btn-info btn-choice" data-choice="Arts">Arts</button>
-            <button class="btn btn-info btn-choice" data-choice="Computer Science">Music</button>
-            <button class="btn btn-info btn-choice" data-choice="Computer Science">Technology</button>
+            <button class="btn btn-info btn-choice" data-choice="Music">Music</button>
+            <button class="btn btn-info btn-choice" data-choice="Technology">Technology</button>
             <p class="error-message" id="subject-error">Please select a subject.</p>
         </div>
-        
 
         <!-- Choose Language -->
         <div id="language-section" class="choice-section text-center">
@@ -67,6 +63,27 @@
         </div>
     </div>
     <script src="../static/js/handlepreferences.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const subjectButtons = document.querySelectorAll("#subject-section .btn-choice");
+            const languageSection = document.getElementById("language-section");
 
+            subjectButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    // Remove 'selected' class from all buttons
+                    subjectButtons.forEach(btn => btn.classList.remove('selected'));
+                    // Add 'selected' class to the clicked button
+                    button.classList.add('selected');
+
+                    const selectedSubject = button.getAttribute("data-choice");
+                    if (selectedSubject === "French" || selectedSubject === "Arabic" || selectedSubject === "English") {
+                        languageSection.style.display = "none";
+                    } else {
+                        languageSection.style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
