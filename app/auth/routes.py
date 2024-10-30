@@ -2,7 +2,7 @@ import os
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from flask_login import login_user, logout_user, login_required, current_user
 from app import db
-from app.auth.forms import LoginForm, RegistrationForm, ForgotPasswordForm
+from app.auth.forms import LoginForm, RegistrationForm, ForgotPasswordForm, ResetPasswordForm
 from .models import User, Preferences, Schedule, Holiday, Student
 from app.auth import auth_bp
 from datetime import datetime, timedelta
@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+
 # Route for Login
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -24,6 +25,7 @@ def login():
         else:
             flash('Invalid email or password.', 'danger')
     return render_template('login.html', form=form)
+
 # Route for registration
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -85,3 +87,18 @@ def send_reset_email(to_email, token):
     response = requests.post(api_url, data=payload)
     if response.status_code != 200:
         flash('Failed to send email. Please try again later.', 'danger')
+
+# Route for reset password
+@auth_bp.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    user = User.verify_reset_password_token(token)
+    if not user:
+        flash('Invalid or expired token.', 'danger')
+        return redirect(url_for('auth.forgot_password'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user.set_password(form.new_password.data)
+        db.session.commit()
+        flash('Your password has been reset. Please log in.', 'success')
+        return redirect(url_for('auth.login'))
+    return render_template('reset_password.html', form=form)
