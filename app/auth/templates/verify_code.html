@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Code</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .verify-container {
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="verify-container">
+        <h3 class="text-center mb-4">Enter Verification Code</h3>
+        <form method="POST" action="{{ url_for('auth.verify_code') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.code.label(class="form-label") }}
+                {{ form.code(class="form-control") }}
+                {% if form.code.errors %}
+                    <div class="text-danger">{{ form.code.errors[0] }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Verify Code</button>
+        </form>
+    </div>
+</body>
+</html>

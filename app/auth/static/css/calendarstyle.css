@@ -1,60 +1,76 @@
-/* styles.css */
-.schedule-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+/* Updated styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
 }
 
-#schedule-table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
+.container {
+  width: 90%;
+  margin: 20px auto;
 }
 
-#schedule-table th, #schedule-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#schedule-table th {
-    background-color: #f4f4f4;
+thead {
+  background-color: #007bff;
+  color: #fff;
 }
 
-#schedule-table td.selected {
-    background-color: #add8e6;
+th, td {
+  border: 1px solid #dee2e6;
+  padding: 12px;
+  text-align: center;
+  position: relative;
 }
-/*setting icon style and positioning*/
-.relative-td {
-    position: relative;
-    border: 1px solid #ccc;
-  }
-  
-  .positioned-image {
-    position: absolute;
-  }
-  
-  .top-left {
-    width: 25px;
-    height: auto;
-    top: -25px; /* Adjust as needed */
-    left: -10px; /* Adjust as needed */
-  }
-  
-  .top-right {
-    width: 25px;
-    height: auto;
-    top: -25px; /* Adjust as needed */
-    right: -10px; /* Adjust as needed */
-  }
-  
-  .bottom-right {
-    /* background-image: url('../assets/arrow.png');
-    background-repeat: no-repeat; */
-    width: 25px;
-    bottom: -4px; /* Adjust as needed */
-    right: -25px; /* Adjust as needed */
-  }
-  
+
+td {
+  background-color: #fff;
+}
+
+td.expanded {
+  background-color: #d1ecf1;
+  animation: expandAnimation 0.4s ease;
+}
+
+@keyframes expandAnimation {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
+
+.icon-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.icon-btn.expand-icon {
+  color: #28a745;
+}
+
+.icon-btn.remove-icon {
+  color: #dc3545;
+}
+
+input[type="text"] {
+  width: 90%;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.icon {
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+td:hover .icon {
+  display: block;
+}

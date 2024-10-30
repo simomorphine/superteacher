@@ -8,36 +8,6 @@
     <link href="../static/css/calendarstyle.css" rel="stylesheet">
 </head>
 <style>
-    .relative-td {
-        position: relative; /* Make the <td> a positioning context */
-    }
-
-    /* General styles for the positioned SVG buttons */
-    .positioned-svg {
-        position: absolute; /* Position the buttons absolutely within the <td> */
-        background: transparent; /* Make background transparent */
-        border: none; /* Remove border */
-        cursor: pointer; /* Change cursor to pointer on hover */
-        outline: none; /* Remove outline */
-    }
-
-    /* Expand button styles */
-    .positioned-svg.expand {
-        height: 100%; /* Fill the height of the cell */
-        right: 0; /* Position it at the right side */
-        top: 0; /* Align it at the top */
-    }
-
-    /* Remove button styles */
-    .positioned-svg.remove {
-        top: 5px; /* Adjust this value to position it vertically */
-        left: 5px; /* Adjust this value to position it horizontally */
-    }
-
-    /* Optional: style the SVG for better visibility */
-    svg {
-        fill: #54f5a5; /* Default color for SVG */
-    }
 
 </style>
 <body>

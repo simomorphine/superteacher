@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Holidays List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .drop-zone {
+            border: 2px dashed #007bff;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .drop-zone.highlight {
+            border-color: #0056b3;
+        }
+
+        .drop-zone p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mb-4">Import Holidays List</h1>
+
+        <div id="dropZone" class="drop-zone">
+            <p>Drag & drop your files here or click to select files</p>
+        </div>
+
+        <input type="file" class="d-none" id="holidayFile" accept=".xls,.xlsx,.pdf,image/*" />
+        
+        <div class="form-group">
+            <label for="holidayInput">Or Enter Holidays Manually:</label>
+            <textarea class="form-control" id="holidayInput" rows="5" placeholder="Enter holidays separated by commas"></textarea>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="importHolidays()">Import Holidays</button>
+
+        <div id="output" class="mt-4"></div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('holidayFile');
+
+        // Highlight the drop zone when a file is dragged over
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+
+        // Remove the highlight when the drag leaves the drop zone
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('highlight');
+        });
+
+        // Handle the dropped files
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropZone.classList.remove('highlight');
+            const files = event.dataTransfer.files;
+
+            if (files.length > 0) {
+                fileInput.files = files; // Assign the dropped files to the file input
+                const fileNames = Array.from(files).map(file => file.name).join(', ');
+                dropZone.innerHTML = `<p>Files ready to import: ${fileNames}</p>`;
+            }
+        });
+
+        // Click event to trigger file input when drop zone is clicked
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        function importHolidays() {
+            const manualInput = document.getElementById('holidayInput').value;
+            let output = '';
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                output += `<h4>File Imported:</h4><p>${file.name}</p>`;
+                // Handle file upload logic here in the backend (not implemented in this example)
+            } else if (manualInput.trim() !== '') {
+                const holidays = manualInput.split(',').map(holiday => holiday.trim());
+                output += '<h4>Holidays Imported:</h4><ul>';
+                holidays.forEach(holiday => {
+                    output += `<li>${holiday}</li>`;
+                });
+                output += '</ul>';
+            } else {
+                output = '<p>Please upload a file or enter holidays manually.</p>';
+            }
+
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+</body>
+
+</html>

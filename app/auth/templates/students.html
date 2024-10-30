@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Student Lists</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .drop-zone {
+            border: 2px dashed #007bff;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .drop-zone.highlight {
+            border-color: #0056b3;
+        }
+
+        .drop-zone p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mb-4">Import Student Lists</h1>
+
+        <div id="dropZone" class="drop-zone">
+            <p>Drag & drop your files here or click to select files</p>
+        </div>
+
+        <input type="file" class="d-none" id="studentFile" accept=".xls,.xlsx,.csv,.pdf,image/*" />
+
+        <div id="output" class="mt-4"></div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('studentFile');
+
+        // Highlight the drop zone when a file is dragged over
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+
+        // Remove the highlight when the drag leaves the drop zone
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('highlight');
+        });
+
+        // Handle the dropped files
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropZone.classList.remove('highlight');
+            const files = event.dataTransfer.files;
+
+            if (files.length > 0) {
+                fileInput.files = files; // Assign the dropped files to the file input
+                const fileNames = Array.from(files).map(file => file.name).join(', ');
+                dropZone.innerHTML = `<p>Files ready to import: ${fileNames}</p>`;
+            }
+        });
+
+        // Click event to trigger file input when drop zone is clicked
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        function importStudents() {
+            const output = document.getElementById('output');
+            if (fileInput.files.length > 0) {
+                const fileNames = Array.from(fileInput.files).map(file => file.name).join(', ');
+                output.innerHTML = `<h4>Student List Imported:</h4><p>${fileNames}</p>`;
+                // Handle file upload logic here in the backend (not implemented in this example)
+            } else {
+                output.innerHTML = '<p>Please upload a file to import student lists.</p>';
+            }
+        }
+
+        // Optional: Automatically import students when files are dropped
+        dropZone.addEventListener('drop', importStudents);
+    </script>
+</body>
+
+</html>
