@@ -5,7 +5,7 @@ from app import db, mail
 from app.auth.forms import LoginForm, RegistrationForm, ForgotPasswordForm, ResetPasswordForm
 from .models import User, Preferences, Schedule, Holiday, Student
 from app.auth import auth_bp
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from flask_mail import Message
 from dotenv import load_dotenv
 
@@ -41,6 +41,11 @@ def register():
     return render_template('register.html', form=form)
 
 # Route for preferences
+"""you need to work here on data collection and storage you need to split it to
+multiple routes first one for basic preferences second for schedule and third for 
+students tables and fourth for holidays dont forget that those last three routes
+can be skiped by the user and he can upload them later from his profile or his
+settengs"""
 @auth_bp.route('/preferences', methods=['GET', 'POST'])
 @login_required
 def preferences():
@@ -60,7 +65,7 @@ def forgot_password():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
-            now = datetime.now(datetime.timezone.utc)
+            now = datetime.now(timezone.utc)
             if user.last_password_reset_request and now - user.last_password_reset_request < timedelta(minutes=15):
                 flash('You can only request a password reset once every 15 minutes.', 'warning')
             else:
