@@ -26,7 +26,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user)
             flash('Logged in successfully.', 'success')
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.dashboard'))
         else:
             flash('Invalid email or password.', 'danger')
     return render_template('login.html', form=form)
@@ -65,7 +65,7 @@ def basic_preferences():
         db.session.commit()
         flash('Basic preferences updated successfully.', 'success')
         return redirect(url_for('auth.schedule_preferences'))
-    return render_template('preferences_basic.html')
+    return render_template('preferences.html')
 
 # Route for schedule preferences
 @auth_bp.route('/preferences/schedule', methods=['GET', 'POST'])
